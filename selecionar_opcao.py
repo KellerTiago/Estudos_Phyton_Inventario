@@ -13,9 +13,18 @@ def persistir (inventario):
             inv.write(f"{chave};{valor[0]};{valor[1]};{valor[2]}\n")
     return "Salvo com sucesso"
 def exibir ():
-    with open("inventario.txt", "r") as inv:
+    with open("inventario.csv", "r") as inv:
         linhas = inv.readlines()
-    return linhas
+    for linha in linhas:
+        separacao=linha[linha.find(";")+1:-1]
+        data=separacao[0:separacao.find(";")]
+        separacao = separacao[separacao.find(";")+1:-1]
+        descricao=separacao[0:separacao.find(";")]
+        departamento=linha[linha.rfind(";")+1:-1]
+        print ("Data.........: ", data)
+        print("Descrição....: ", descricao)
+        print("Departamento.: ", departamento)
+
 
 
 
